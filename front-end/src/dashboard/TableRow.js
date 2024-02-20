@@ -4,24 +4,10 @@ import { finishTable, listTables } from "../utils/api";
 
 /** a function to display an individual 'TableRow' with data (columns) shown below */
 export default function TableRow({ table }) {
-  /** if no table or undefined, return nulll */
+  // if no table or undefined, return nulll 
   if (!table) return null;
 
 
-  // /** handles finishing a seated table */
-  // function handleFinish() {
-  //   if (
-  //     window.confirm(
-  //       "Is this table ready to seat new guests? This cannot be undone."
-  //     )
-  //   ) {
-  //     const abortController = new AbortController();
-  //     finishTable(table.table_id, abortController.signal)
-  //       // .then(loadDashboard)
-  //       .then(() => window.location.reload())
-  //     return () => abortController.abort();
-  //   }
-  // }
   const handleFinish = (table_id) => {
     const abortController = new AbortController();
     let result = window.confirm(

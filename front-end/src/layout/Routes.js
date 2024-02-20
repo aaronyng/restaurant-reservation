@@ -18,7 +18,7 @@ import EditReservation from "../reservations/EditReservation";
 import CreateReservation from "../reservations/CreateReservation";
 
 
-/** defines all the routes for the application */
+// defines all the routes for the application
 function Routes() {
   const [reservations, setReservations] = useState([]);
   const [tables, setTables] = useState([]);
@@ -38,9 +38,7 @@ function Routes() {
       if (location.pathname === "/dashboard")
         history.push(`/dashboard?date=${today()}`);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     function loadDashboard() {
       const abortController = new AbortController();
@@ -75,7 +73,7 @@ function Routes() {
   }
 
 
-  /** retursn the components and the paths */
+  // returns components and paths
   return (
     <Switch>
       <Route exact={true} path="/">
@@ -86,20 +84,13 @@ function Routes() {
         <Redirect to={`/dashboard`} />
       </Route>
 
-      {/* <Route path="/reservations/new">
-        <NewReservation loadDashboard={loadDashboard} />
-      </Route> */}
       <Route path="/reservations/new">
         <CreateReservation 
-          // loadDashboard={loadDashboard} 
           reservations={reservations}
           setReservations={setReservations}
         />
       </Route>
 
-      {/* <Route path="/reservations/:reservation_id/edit">
-        <NewReservation loadDashboard={loadDashboard} edit={true} />
-      </Route> */}
       <Route path="/reservations/:reservation_id/edit">
         <EditReservation 
           reservations={reservations}

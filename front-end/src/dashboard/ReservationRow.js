@@ -3,16 +3,16 @@ import { Link } from "react-router-dom";
 import { updateReservationStatus } from "../utils/api";
 
 
-/** a function to display an individual 'ReservationRow' with data (columns) shown below */
+// function to display an individual 'ReservationRow' with data (columns) shown below
 export default function ReservationRow({ reservation, loadDashboard }) {
  
-  /** if there is no reservation passed through or the status = finished, return null. */
+  // if there is no reservation passed through or the status = finished, return null
   if (!reservation || reservation.status === "finished") return null;
 
 
-  /** handles if the user wants to cancel a reservation*/
+  // handles if the user wants to cancel a reservation
   function handleCancel() {
-    /** updates reservation status if user confirms */
+    // updates reservation status if user confirms
     if (
       window.confirm(
         "Do you want to cancel this reservation? This cannot be undone."
@@ -33,12 +33,12 @@ export default function ReservationRow({ reservation, loadDashboard }) {
   } 
 
 
-  /** displays a single reservations for the given day ;
+  /** displays a single reservations for given day
    *  each single reservation is mapped in 'reservationsJSX()' in 'Dashboard'
-   *  to create a list of reservations. 
+   *  create a list of reservations 
    */
   return (
-    <tr style={{fontFamily: "Courier"}}>
+    <tr style={{fontFamily: "Sans-serif"}}>
       <th scope="row" className="text-white">{reservation.reservation_id}</th>
       <td className="text-center text-white">{reservation.first_name}</td>
       <td className="text-center text-white">{reservation.last_name}</td>

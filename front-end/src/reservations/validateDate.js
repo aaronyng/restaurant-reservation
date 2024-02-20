@@ -34,6 +34,6 @@ export default function validateDate(formData, setDateErrors) {
     setDateErrors(foundErrors);
     return false;
   }
-  // if we get here, our reservation date is valid!
+
   return true;
 }

@@ -13,14 +13,12 @@ export default function Search() {
   const [reservations, setReservations] = useState([]);
   const [error, setError] = useState(null);
 
-  /**
-   * updates the state of mobileNumber when the user makes any changes to it
-   */
+  // updates the state of mobileNumber when changes are made
   function handleChange({ target }) {
     setMobileNumber(target.value);
   }
 
-  /** makes a get request to list all reservations under the given mobileNumber when the "submit" button is clicked */
+  // list all reservations under the given mobileNumber when the "submit" button is clicked
   function handleSubmit(event) {
     event.preventDefault();
     const abortController = new AbortController();
@@ -33,7 +31,7 @@ export default function Search() {
     return () => abortController.abort();
   }
 
-  /** returns all reservation(s), if any */
+  // returns all reservations
   const searchResultsJSX = () => {
     return reservations.length > 0 ? (
       reservations.map((reservation) => (
@@ -53,7 +51,7 @@ export default function Search() {
     <div
       className="w-80 ml-2 pr-4 mr-4 pt-4"
     >
-      <h1 className="font-weight-bold d-flex justify-content-center mt-4 mb-4 pb-4">
+      <h1 className="font-weight-bold d-flex justify-content-left mt-4 mb-4 pb-4">
         Search
       </h1>
       <form>
@@ -68,7 +66,7 @@ export default function Search() {
             onChange={handleChange}
             value={FormData.mobile_number}
             required
-          />
+          /> 
           <button
             className="btn-xs btn-outline-0 btn-outline-dark rounded px-2 pb-1"
             type="submit"
@@ -89,7 +87,7 @@ export default function Search() {
       </form>
 
       <table className="table table-hover mt-4">
-        <thead className="thead-dark">
+        <thead className="thead-light">
           <tr className="text-center">
             <th scope="col">ID</th>
             <th scope="col text-center">First Name</th>

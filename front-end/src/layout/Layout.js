@@ -16,12 +16,9 @@ function Layout() {
     <div
       className="container-fluid bg-dark"
       style={{
-        fontFamily: "Courier",
-        // backgroundColor: "#FFB93A",
-        // backgroundColor: 
-        color: "#FF5733",
+        fontFamily: "Sans-serif",
+        color: "#FFFFFF",
         height: "200vh",
-        // width: "200vh"
       }}
     >
       <div className="row">
@@ -35,5 +32,6 @@ function Layout() {
     </div>
   );
 }
+
 
 export default Layout;
