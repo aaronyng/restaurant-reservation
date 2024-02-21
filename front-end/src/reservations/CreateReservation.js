@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useHistory } from "react-router";
 import ErrorAlert from "../layout/ErrorAlert";
-import { newReservation } from "../utils/api";
+import { createReservation } from "../utils/api";
 import ReservationForm from "./ReservationForm";
 import validateDate from "./validateDate";
 
