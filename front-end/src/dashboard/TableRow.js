@@ -2,7 +2,7 @@ import React from "react";
 import { finishTable, listTables } from "../utils/api";
 
 
-/** a function to display an individual 'TableRow' with data (columns) shown below */
+// function to display individual 'TableRow' with data (columns) shown below
 export default function TableRow({ table }) {
   // if no table or undefined, return nulll 
   if (!table) return null;
@@ -20,10 +20,10 @@ export default function TableRow({ table }) {
   };
   
 
-  /** displays a single table (row), which is mapped in tablesJSX() in Dashboard,
-   * which then displays a list of all tables */
+  /* displays a single table (row), mapped in tablesJSX() in Dashboard,
+   * displays a list of all tables */
   return (
-    <tr style={{ fontFamily: "Courier" }} >
+    <tr style={{ fontFamily: "Sans-serif" }} >
       <th className="text-center text-white" scope="row">{table.table_id}</th>
       <td className="text-center text-white">{table.table_name}</td>
       <td className="text-center text-white">{table.capacity}</td>

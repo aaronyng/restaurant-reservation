@@ -7,7 +7,6 @@ import { createTable } from "../utils/api";
 // returns a 'NewTable' form to create a new table that sits an entered quantity
 export default function NewTable({ loadDashboard }) {
   const history = useHistory();
-
   const [error, setError] = useState([]);
   // sets initial state of a table
   const [formData, setFormData] = useState({
