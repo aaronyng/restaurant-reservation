@@ -54,7 +54,7 @@ export default function ReservationRow({ reservation, loadDashboard }) {
         <>
           <td className="text-center">
             <Link to={`/reservations/${reservation.reservation_id}/edit`}>
-              <button className="btn btn-sm btn-outline-light" type="button">
+              <button className="btn btn-primary btn-sm btn-outline-light" type="button">
                 Edit
               </button>
             </Link>
@@ -62,7 +62,7 @@ export default function ReservationRow({ reservation, loadDashboard }) {
 
           <td className="text-center">
             <button
-              className="btn btn-sm btn-outline-light"
+              className="btn btn-danger btn-sm btn-outline-light"
               type="button"
               onClick={handleCancel}
               data-reservation-id-cancel={reservation.reservation_id}

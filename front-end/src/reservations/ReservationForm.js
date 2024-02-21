@@ -149,7 +149,7 @@ export default function ResForm({
         </div>
 
         <button
-          className="btn btn-primary btn-outline-light m-1"
+          className="btn btn-danger btn-outline-light m-1"
           onClick={(e) => {
             e.preventDefault();
             handleCancel();

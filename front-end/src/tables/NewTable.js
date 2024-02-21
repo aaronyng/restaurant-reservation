@@ -97,7 +97,7 @@ export default function NewTable({ loadDashboard }) {
 
         <div className="d-flex justify-content-center mt-4">
             <button
-              className="btn btn-primary btn-outline-light m-1"
+              className="btn btn-danger btn-outline-light m-1"
               type="button"
               onClick={history.goBack}
             >
@@ -108,7 +108,6 @@ export default function NewTable({ loadDashboard }) {
               type="submit"
               onClick={handleSubmit}
               className="btn btn-primary btn-outline-light m-1"
-              style={{ color: "white" }}
             >
               Submit
             </button>

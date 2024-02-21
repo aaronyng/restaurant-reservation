@@ -84,7 +84,7 @@ export default function SeatReservation({
         </button>
         
         <button
-          className="btn btn-primary btn-outline-light m-1"
+          className="btn btn-danger btn-outline-light m-1"
           onClick={(e) => {
             e.preventDefault();
             history.goBack();

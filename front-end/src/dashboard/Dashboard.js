@@ -117,13 +117,13 @@ function Dashboard({
           <table className="table text-wrap text-center table-hover">
             <thead className="thead-light">
               <tr className="text-center">
-                <th scope="col">ID</th>
+                <th scope="col">#</th>
                 <th scope="col">First Name</th>
                 <th scope="col">Last Name</th>
-                <th scope="col">Mobile Number</th>
+                <th scope="col">Number</th>
                 <th scope="col">Date</th>
                 <th scope="col">Time</th>
-                <th scope="col">People</th>
+                <th scope="col">Guests</th>
                 <th scope="col">Status</th>
                 <th scope="col">Edit</th>
                 <th scope="col">Cancel</th>
@@ -143,7 +143,7 @@ function Dashboard({
           <table className="table table-hover m-1 text-nowrap mb-4">
             <thead className="thead-light">
               <tr className="text-center">
-                <th scope="col">Table ID</th>
+                <th scope="col">#</th>
                 <th scope="col">Table Name</th>
                 <th scope="col">Capacity</th>
                 <th scope="col">Status</th>
