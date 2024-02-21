@@ -1,7 +1,7 @@
 # Restaurant Reservaption App
 
 
-Site:https://restaurant-reservation-frontend-pbmb.onrender.com
+Site: https://restaurant-reservation-frontend-pbmb.onrender.com
 ## Description
 This project was created to for restaurants to allow users to create, update, view, delete reservations, as well as the ability to seat guests at various tables within the restaurant.
 
