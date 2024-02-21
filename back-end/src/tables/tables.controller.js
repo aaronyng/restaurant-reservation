@@ -57,7 +57,7 @@ async function validateSeatedTable(req, res, next) {
   if (res.locals.table.status !== "reserved") {
     return next({ 
       status: 400, 
-      message: "this table is not reserved" });
+      message: "This table is not reserved" });
   }
 
   next();
@@ -72,7 +72,7 @@ async function tableIdExists(req, res, next) {
   if (!table) {
     return next({
       status: 404,
-      message: `table id: ${table_id} does not exist`,
+      message: `Table id: ${table_id} does not exist`,
     });
   }
 
