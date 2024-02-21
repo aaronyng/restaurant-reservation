@@ -113,14 +113,14 @@ async function tableIdExists(req, res, next) {
   if (res.locals.table.status === "reserved") {
     return next({
       status: 400,
-      message: "the table you selected is currently reserved",
+      message: "The table you selected is currently reserved",
     });
   }
 
   if (res.locals.reservation.status === "seated") {
     return next({
       status: 400,
-      message: "the reservation you selected is already seated",
+      message: "The reservation you selected is already seated",
     });
   }
 

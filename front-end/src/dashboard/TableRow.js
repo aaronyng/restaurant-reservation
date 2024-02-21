@@ -37,7 +37,7 @@ export default function TableRow({ table }) {
       {table.status === "occupied" && (
         <td className="text-center">
           <button
-            className="btn btn-sm btn-outline-light"
+            className="btn btn-sm btn-primary btn-outline-light"
             data-table-id-finish={table.table_id}
             onClick={(e) => {
               e.preventDefault();
