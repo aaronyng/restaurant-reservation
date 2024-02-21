@@ -38,7 +38,7 @@ export default function CreateReservation({ reservations, setReservations}) {
 
   return (
     <main>
-      <h1 className="font-weight-bold d-flex justify-content-center mt-4">New Reservation</h1>
+      <h1 className="font-weight-bold d-flex justify-content-left mt-4">New Reservation</h1>
       {errors}
       <ReservationForm handleSubmit={handleSubmit} handleCancel={handleCancel} />
     </main>
