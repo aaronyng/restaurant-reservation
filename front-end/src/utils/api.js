@@ -71,7 +71,7 @@ export async function listReservations(params, signal) {
 }
 
 // posts a new reservation to the reservations page
-export async function newReservation(reservation, signal) {
+export async function createReservation(reservation, signal) {
   const url = `${API_BASE_URL}/reservations`;
   const body = JSON.stringify({ data: reservation });
   return await fetchJson(url, { headers, signal, method: "POST", body }, []);
@@ -86,9 +86,7 @@ export async function listTables(signal) {
 // posts new table to the tables page 
 export async function createTable(table, signal) {
   const url = `${API_BASE_URL}/tables`;
-
   const body = JSON.stringify({ data: table });
-
   return await fetchJson(url, { headers, signal, method: "POST", body }, []);
 }
 

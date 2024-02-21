@@ -5,7 +5,7 @@ import { newReservation } from "../utils/api";
 import ReservationForm from "./ReservationForm";
 import validateDate from "./validateDate";
 
-export default function CreateReservation() {
+export default function CreateReservation({ reservations, setReservations}) {
   const history = useHistory();
   const [errorAlerts, setErrorAlerts] = useState([]);
 
@@ -14,7 +14,7 @@ export default function CreateReservation() {
     const abortController = new AbortController();
     setErrorAlerts([]);
     if (validateDate(res, setErrorAlerts)) {
-      newReservation(res, abortController.signal)
+      createReservation(res, abortController.signal)
         .then(history.push(`/dashboard?date=${res.reservation_date}`))
         .catch(setErrorAlerts);
     }
