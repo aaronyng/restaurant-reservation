@@ -114,7 +114,7 @@ function Dashboard({
           <ErrorAlert error={reservationsError} />
 
           
-          <table className="table text-wrap text-center table-hover">
+          <table className="table table-sm text-wrap text-center table-hover table-bordered">
             <thead className="thead-light">
               <tr className="text-center">
                 <th scope="col">#</th>
@@ -140,7 +140,7 @@ function Dashboard({
 
           <ErrorAlert error={tablesError} />
 
-          <table className="table table-hover m-1 text-nowrap mb-4">
+          <table className="table table-hover m-1 text-nowrap mb-4 table-bordered">
             <thead className="thead-light">
               <tr className="text-center">
                 <th scope="col">#</th>
