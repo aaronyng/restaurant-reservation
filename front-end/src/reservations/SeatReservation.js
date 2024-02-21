@@ -79,12 +79,12 @@ export default function SeatReservation({
           {tableMenu}
         </select>
         
-        <button className="btn btn-outline-light m-1" type="submit">
+        <button className="btn btn-primary btn-outline-light m-1" type="submit">
           Submit
         </button>
         
         <button
-          className="btn btn-outline-light m-1"
+          className="btn btn-primary btn-outline-light m-1"
           onClick={(e) => {
             e.preventDefault();
             history.goBack();

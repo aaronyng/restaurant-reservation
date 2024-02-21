@@ -106,7 +106,7 @@ function Dashboard({
           </div>
 
           <h4 className="mt-4 font-weight-bold d-flex justify-content-center mb-2">
-            {date}
+            Date: {date}
           </h4>
 
           <h4 className="mb-4 mt-4 pl-1 font-weight-bold">Reservations</h4>

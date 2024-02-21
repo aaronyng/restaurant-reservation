@@ -64,7 +64,7 @@ export default function EditRes({ reservations, setReservations }) {
   );
   return (
     <main>
-      <h1 className="font-weight-bold d-flex justify-content-center mt-4">Edit Reservation</h1>
+      <h1 className="font-weight-bold d-flex justify-content-left mt-4">Edit Reservation</h1>
       {errors}
       {child}
     </main>

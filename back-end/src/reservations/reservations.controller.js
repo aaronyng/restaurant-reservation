@@ -13,7 +13,7 @@ async function validateData(request, response, next) {
   next();
 }
 
-/** checks to ensure that any of the required fields are provided */
+// ensures all required fields are provided
 async function validateBody(request, response, next) {
   const requiredFields = [
     "first_name",
@@ -58,7 +58,7 @@ async function validateBody(request, response, next) {
   if (request.body.data.status && request.body.data.status !== "booked") {
     return next({
       status: 400,
-      message: `'status' field cannot be ${request.body.data.status}`,
+      message: `Status cannot be ${request.body.data.status}`,
     });
   }
 
@@ -79,7 +79,7 @@ async function validateDate(request, response, next) {
   if (reserveDate.getDay() === 2) {
     return next({
       status: 400,
-      message: "'reservation_date' field: restaurant is closed on tuesday",
+      message: "Restaurant is closed on Tuesdays",
     });
   }
 
@@ -87,7 +87,7 @@ async function validateDate(request, response, next) {
     return next({
       status: 400,
       message:
-        "'reservation_date' and 'reservation_time' field must be in the future",
+        "Date and Time must be in the future",
     });
   }
 
@@ -97,7 +97,7 @@ async function validateDate(request, response, next) {
   ) {
     return next({
       status: 400,
-      message: "'reservation_time' field: restaurant is not open until 10:30AM",
+      message: "Restaurant is not open until 10:30AM",
     });
   }
 
@@ -107,7 +107,7 @@ async function validateDate(request, response, next) {
   ) {
     return next({
       status: 400,
-      message: "'reservation_time' field: restaurant is closed after 10:30PM",
+      message: "Restaurant is closed after 10:30PM",
     });
   }
 
@@ -118,31 +118,34 @@ async function validateDate(request, response, next) {
     return next({
       status: 400,
       message:
-        "'reservation_time' field: reservation must be made at least an hour before closing (10:30PM)",
+        "Reservation must be made at least an hour before closing: 10:30PM",
     });
   }
 
   next();
 }
 
-/** uses read() to return the data with the given reservation id in the request params */
+// return the data with the given reservation id in the request params
 async function validateReservationId(request, response, next) {
   const { reservation_id } = request.params;
   const reservation = await service.read(Number(reservation_id));
   if (!reservation) {
     return next({
       status: 404,
-      message: `reservation id ${reservation_id} does not exist`,
+      message: `reservation id: ${reservation_id} does not exist`,
     });
   }
   response.locals.reservation = reservation;
   next();
 }
 
-/** ensures that the reservation has a valid status */
+// ensures reservation has a valid status
 async function validateUpdateBody(request, response, next) {
   if (!request.body.data.status) {
-    return next({ status: 400, message: "body must include a status field" });
+    return next({ 
+      status: 400, 
+      message: "Body must include a status field" 
+    });
   }
 
   if (
@@ -153,24 +156,24 @@ async function validateUpdateBody(request, response, next) {
   ) {
     return next({
       status: 400,
-      message: `'status' field cannot be ${request.body.data.status}`,
+      message: `Status cannot be ${request.body.data.status}`,
     });
   }
 
   if (response.locals.reservation.status === "finished") {
     return next({
       status: 400,
-      message: `a finished reservation cannot be updated`,
+      message: `Finished reservation cannot be updated`,
     });
   }
   next();
 }
 
 
-///// HANDLERS /////
+// HANDLERS //
 
 
-/** lists reservations for a given date with or without a given phone number */
+// lists reservations for a given date with or without a given phone number
 async function list(request, response) {
   const date = request.query.date;
   const mobile_number = request.query.mobile_number;
@@ -182,14 +185,14 @@ async function list(request, response) {
 }
 
 
-/** creates a new reservation, and returns it's data from the reservations list */
+// creates a new reservation, returns data from the reservations list
 async function create(request, response) {
   request.body.data.status = "booked";
   const res = await service.create(request.body.data);
   response.status(201).json({ data: res[0] });
 }
 
-/** updates a valid reservation */
+// updates existing reservation
 async function update(request, response) {
   await service.update(
     response.locals.reservation.reservation_id,
@@ -199,7 +202,7 @@ async function update(request, response) {
   response.status(200).json({ data: { status: request.body.data.status } });
 }
 
-/** edits a valid reservation */
+// edits existing reservation
 async function edit(request, response) {
   const res = await service.edit(
     response.locals.reservation.reservation_id,
@@ -208,7 +211,7 @@ async function edit(request, response) {
   response.status(200).json({ data: res[0] });
 }
 
-/** retrieves a given reservation */
+// retrieves a given reservation
 async function read(request, response) {
   response.status(200).json({ data: response.locals.reservation });
 }
@@ -234,5 +237,8 @@ module.exports = {
     asyncErrorBoundary(validateDate),
     asyncErrorBoundary(edit),
   ],
-  read: [asyncErrorBoundary(validateReservationId), asyncErrorBoundary(read)],
+  read: [
+    asyncErrorBoundary(validateReservationId), 
+    asyncErrorBoundary(read)
+  ]
 };

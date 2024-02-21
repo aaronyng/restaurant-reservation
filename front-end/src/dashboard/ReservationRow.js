@@ -6,7 +6,7 @@ import { updateReservationStatus } from "../utils/api";
 // function to display an individual 'ReservationRow' with data (columns) shown below
 export default function ReservationRow({ reservation, loadDashboard }) {
  
-  // if there is no reservation passed through or the status = finished, return null
+  // if there is no reservation passed or status = finished, return null
   if (!reservation || reservation.status === "finished") return null;
 
 
@@ -15,7 +15,7 @@ export default function ReservationRow({ reservation, loadDashboard }) {
     // updates reservation status if user confirms
     if (
       window.confirm(
-        "Do you want to cancel this reservation? This cannot be undone."
+        "Are you sure you want to cancel your reservation?"
       )
     ) {
       const abortController = new AbortController();
