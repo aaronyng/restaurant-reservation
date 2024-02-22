@@ -39,6 +39,7 @@ function Routes() {
         history.push(`/dashboard?date=${today()}`);
     }
   }, [query]);
+
   useEffect(() => {
     function loadDashboard() {
       const abortController = new AbortController();
@@ -133,5 +134,6 @@ function Routes() {
     </Switch>
   );
 }
+
 
 export default Routes;
