@@ -17,15 +17,15 @@ export default function ReservationRow({ reservation, loadDashboard }) {
         "Are you sure you want to cancel your reservation?"
       )
     ) {
-      const abortController = new AbortController();
+      //const abortController = new AbortController();
 
       updateReservationStatus(
         reservation.reservation_id,
-        "cancelled",
-        abortController.status
-      ).then(() => window.location.reload())
+        "cancelled"
+        //abortController.status
+      ).then(window.location.reload())
 
-      return () => abortController.abort();
+      //return () => abortController.abort();
     }
   } 
 
