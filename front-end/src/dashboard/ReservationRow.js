@@ -21,12 +21,9 @@ export default function ReservationRow({ reservation, loadDashboard }) {
 
       updateReservationStatus(
         reservation.reservation_id,
-        "cancelled"
-        //abortController.status
-      ).then(loadDashboard)
-       .then(() => {
-          window.location.reload()
-       })
+        "cancelled",
+        abortController.status
+      ).then(() => window.location.reload())
 
       return () => abortController.abort();
     }
