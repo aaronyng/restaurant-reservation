@@ -8,7 +8,10 @@ const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 // checks for data in the request
 async function validateData(request, response, next) {
   if (!request.body.data) {
-    return next({ status: 400, message: "Body must include a data object" });
+    return next({ 
+      status: 400, 
+      message: "Body must include a data object" 
+    });
   }
   next();
 }
@@ -29,7 +32,10 @@ async function validateBody(request, response, next) {
       !request.body.data.hasOwnProperty(field) ||
       request.body.data[field] === ""
     ) {
-      return next({ status: 400, message: `Field required: '${field}'` });
+      return next({ 
+        status: 400, 
+        message: `Field required: '${field}'` 
+      });
     }
   }
 
@@ -48,17 +54,23 @@ async function validateBody(request, response, next) {
   }
 
   if (typeof request.body.data.people !== "number") {
-    return next({ status: 400, message: "'people' field must be a number" });
+    return next({ 
+      status: 400, 
+      message: "'people' field must be a number" 
+    });
   }
 
   if (request.body.data.people < 1) {
-    return next({ status: 400, message: "'people' field must be at least 1" });
+    return next({ 
+      status: 400, 
+      message: "'people' field must be at least 1" 
+    });
   }
 
   if (request.body.data.status && request.body.data.status !== "booked") {
     return next({
       status: 400,
-      message: `Status cannot be ${request.body.data.status}`,
+      message: `'status' field cannot be ${request.body.data.status}`,
     });
   }
 
@@ -142,10 +154,7 @@ async function validateReservationId(request, response, next) {
 // ensures reservation has a valid status
 async function validateUpdateBody(request, response, next) {
   if (!request.body.data.status) {
-    return next({ 
-      status: 400, 
-      message: "Body must include a status field" 
-    });
+    return next({ status: 400, message: "body must include a status field" });
   }
 
   if (
@@ -156,14 +165,14 @@ async function validateUpdateBody(request, response, next) {
   ) {
     return next({
       status: 400,
-      message: `Status cannot be ${request.body.data.status}`,
+      message: `'status' field cannot be ${request.body.data.status}`,
     });
   }
 
   if (response.locals.reservation.status === "finished") {
     return next({
       status: 400,
-      message: `Finished reservation cannot be updated`,
+      message: `a finished reservation cannot be updated`,
     });
   }
   next();

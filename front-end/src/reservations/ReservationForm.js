@@ -132,7 +132,7 @@ export default function ResForm({
           </div>
           <div className="form-group col-md-6">
             <label className="form-label" htmlFor="people">
-              Number of people:&nbsp;
+              Number of guests:&nbsp;
             </label>
             <input
               className="form-control border-secondary"

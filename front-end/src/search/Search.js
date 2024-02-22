@@ -95,7 +95,7 @@ export default function Search() {
             <th scope="col text-center">Mobile Number</th>
             <th scope="col">Date</th>
             <th scope="col">Time</th>
-            <th scope="col">People</th>
+            <th scope="col">Guests</th>
             <th scope="col">Status</th>
             <th scope="col">Edit</th>
             <th scope="col">Cancel</th>

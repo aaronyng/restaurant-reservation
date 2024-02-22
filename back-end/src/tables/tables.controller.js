@@ -8,7 +8,10 @@ const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 // checks for data in the request
 async function dataExists(req, res, next) {
   if (!req.body.data) {
-    return next({ status: 400, message: "Body must include a data object" });
+    return next({ 
+      status: 400, 
+      message: "Body must include a data object" 
+    });
   }
 
   next();
@@ -18,8 +21,9 @@ async function dataExists(req, res, next) {
 async function bodyExists(req, res, next) {
   if (!req.body.data.table_name || req.body.data.table_name === "") {
     return next({ 
-      status: 400, 
-      message: "'table_name' field is empty" });
+      status: 400,
+      message: "'table_name' field is empty" 
+    });
   }
 
   if (req.body.data.table_name.length < 2) {
@@ -32,13 +36,15 @@ async function bodyExists(req, res, next) {
   if (!req.body.data.capacity || req.body.data.capacity === "") {
     return next({ 
       status: 400, 
-      message: "'capacity' field is empty" });
+      message: "'capacity' field is empty" 
+    });
   }
 
   if (typeof req.body.data.capacity !== "number") {
     return next({ 
       status: 400, 
-      message: "'capacity' field must be a number" });
+      message: "'capacity' field must be a number" 
+    });
   }
 
   if (req.body.data.capacity < 1) {
@@ -51,20 +57,19 @@ async function bodyExists(req, res, next) {
   next();
 }
 
-
-// makes sure that a table status is not reserved before seating
+// makes sure that a table status is not occupied before seating
 async function validateSeatedTable(req, res, next) {
-  if (res.locals.table.status !== "reserved") {
+  if (res.locals.table.status !== "occupied") {
     return next({ 
-      status: 400, 
-      message: "This table is not reserved" });
+      status: 400,
+       message: "This table is not occupied" 
+      });
   }
 
   next();
 }
 
-
-// checks if the given table_id exists
+// checks if the given table id exists
 async function tableIdExists(req, res, next) {
   const { table_id } = req.params;
   const table = await service.read(table_id);
@@ -110,10 +115,10 @@ async function tableIdExists(req, res, next) {
 
 // checks table status and capacity are valid for the reservation
  async function validateSeat(req, res, next) {
-  if (res.locals.table.status === "reserved") {
+  if (res.locals.table.status === "occupied") {
     return next({
       status: 400,
-      message: "The table you selected is currently reserved",
+      message: "The table you selected is currently occupied",
     });
   }
 
@@ -141,7 +146,6 @@ async function tableIdExists(req, res, next) {
 // lists all tables
 async function list(req, res) {
   const result = await service.list();
-
   res.json({ data: result });
 }
 
@@ -149,7 +153,7 @@ async function list(req, res) {
 // creates table.
 async function create(req, res) {
   if (req.body.data.reservation_id) {
-    req.body.data.status = "reserved";
+    req.body.data.status = "occupied";
     await service.updateReservation(req.body.data.reservation_id, "seated");
   } else {
     req.body.data.status = "free";
@@ -163,7 +167,7 @@ async function create(req, res) {
 
 // updates table when it is seated
 async function update(req, res) {
-  await service.reserved(
+  await service.occupy(
     res.locals.table.table_id,
     res.locals.reservation.reservation_id
   );
