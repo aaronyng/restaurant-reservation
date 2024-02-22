@@ -9,7 +9,6 @@ export default function ReservationRow({ reservation, loadDashboard }) {
   // if there is no reservation passed or status = finished, return null
   if (!reservation || reservation.status === "finished") return null;
 
-
   // handles if the user wants to cancel a reservation
   function handleCancel() {
     // updates reservation status if user confirms
@@ -25,8 +24,6 @@ export default function ReservationRow({ reservation, loadDashboard }) {
         "cancelled",
         abortController.status
       ).then(loadDashboard)
-      .then(() => window.location.reload())
-
 
       return () => abortController.abort();
     }
@@ -63,19 +60,19 @@ export default function ReservationRow({ reservation, loadDashboard }) {
           <td className="text-center">
             <button
               className="btn btn-danger btn-sm btn-outline-light"
-              type="button"
-              onClick={handleCancel}
               data-reservation-id-cancel={reservation.reservation_id}
+              onClick={handleCancel}
             >
               Cancel
             </button>
           </td>
 
           <td className="text-center">
-            <a href={`/reservations/${reservation.reservation_id}/seat`}>
-              <button className="btn btn-sm btn-outline-light" type="button">
+            <a 
+              className="btn btn-sm btn-outline-light"
+              role="button"
+              href={`/reservations/${reservation.reservation_id}/seat`}>
                 Seat
-              </button>
             </a>
           </td>
         </>
